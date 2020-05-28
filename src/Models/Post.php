@@ -5,13 +5,15 @@ namespace doctype_admin\Blog\Models;
 use App\User;
 use Conner\Tagging\Taggable;
 use doctype_admin\Blog\Models\Category;
+use doctype_admin\Blog\Traits\PostScopes;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ModelScopes;
 
 class Post extends Model
 {
-    use Taggable;
-    
-    protected $guarded =[];
+    use Taggable, PostScopes, ModelScopes;
+
+    protected $guarded = [];
 
     public function save(array $options = [])
     {
@@ -25,11 +27,11 @@ class Post extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class,'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
