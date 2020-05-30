@@ -8,10 +8,11 @@ use doctype_admin\Blog\Models\Category;
 use doctype_admin\Blog\Traits\PostScopes;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelScopes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use Taggable, PostScopes, ModelScopes;
+    use Taggable, PostScopes, ModelScopes, Sluggable;
 
     protected $guarded = [];
 
@@ -33,5 +34,28 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function getStatusAttribute($attribute)
+    {
+        return [
+            1 => "Pending",
+            2 => "Draft",
+            3 => "Published"
+        ][$attribute];
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

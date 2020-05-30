@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/post','PostsController');
+Route::resource('/post', 'PostsController');
 
-Route::resource('/category','CategoriesController');
+Route::resource('/category', 'CategoriesController');
+
+Route::get('/check_slug', 'PostsController@check_slug')->name('check_slug');

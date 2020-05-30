@@ -23,35 +23,35 @@
 </section>
 @stop
 
-  @section('content')
-  <section class="content">
-    <div class="container-fluid">
-      <div class="card card-outline card-info">
-        <div class="card-header">
-          <h3 class="card-title">Post Blog</h3>
-        </div>
-        <div class="card-body">
-          <form action="{{ url(config('blog.prefix','admin').'/'.'post') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @include('blog::layouts.post.create-edit')
-          </form>
-        </div>
-        {{-- --------------------------------------------------------------------------------------------------------------------- --}}
+@section('content')
+<section class="content">
+  <div class="container-fluid">
+    <div class="card card-outline card-info">
+      <div class="card-header">
+        <h3 class="card-title">Post Blog</h3>
       </div>
-
+      <div class="card-body">
+        <form action="{{ url(config('blog.prefix','admin').'/'.'post') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          @include('blog::layouts.post.create-edit')
+        </form>
+      </div>
+      {{-- --------------------------------------------------------------------------------------------------------------------- --}}
     </div>
-  </section>
+
+  </div>
+</section>
 
 
-  @stop
+@stop
 
-    @section('css')
-    <link rel="stylesheet" href="{{asset('/css/admin_custom.css')}}">
-    @stop
+@section('css')
+<link rel="stylesheet" href="{{asset('/css/admin_custom.css')}}">
+@stop
 
-      @section('js')
-      <script>
-        $(function () {
+@section('js')
+<script type="text/javascript">
+  $(function () {
           //Initialize Select2 Elements
           $('.select2').select2()
           //Intialize Summernote Text Editor
@@ -60,8 +60,7 @@
           $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
           });
-
-          $(document).ready(function(){
+         $(document).ready(function(){
         $('#keywords').selectize({
             plugins: ['restore_on_backspace'],
             plugins: ['remove_button'],
@@ -80,6 +79,9 @@
             }
         });
     });
-        });
-      </script>
-      @stop
+
+
+
+  });
+</script>
+@stop
