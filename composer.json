@@ -25,7 +25,7 @@
     "blog package",
     "drh2so4 blog package"
   ],
-  "minimum-stability": "beta",
+  "minimum-stability": "dev",
   "require": {
     "rtconner/laravel-tagging": "~4.0",
     "intervention/image": "^2.4@dev",

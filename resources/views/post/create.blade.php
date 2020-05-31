@@ -80,7 +80,14 @@
         });
     });
 
-
+$('#title').change(function(e) {
+  $.get('{{ route('check_slug') }}',
+  { 'title': $(this).val() },
+  function( data ) {
+  $('#slug').val(data.slug);
+  }
+  ); 
+  });
 
   });
 </script>
