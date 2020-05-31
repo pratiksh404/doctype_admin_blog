@@ -15,12 +15,6 @@ Run Composer Require Command
 composer require doctype_admin/blog
 ```
 
-Create a copy of your .env file
-
-```sh
-cp .env.example .env
-```
-
 ### Install package assets
 
 #### Install all assets
@@ -179,6 +173,13 @@ similar goes to relatedTagPost and relatedPost.
 - relatedTagPost scopes uses tags used by the instance to find out other related post using its tags.
 - If you want to use ModelScope provied by doctype admin panel just use ModelScopes on Post Model
 
+## Working with package
+
+- This package uses https://github.com/rtconner/laravel-tagging for tagging posts so you can check it's documentation for further manipulation
+- This package uses https://github.com/cviebrock/eloquent-sluggable for slugging post so you can check it's documentation for further manipulation
+
+## Our Post Model
+
 ```sh
 <?php
 
@@ -190,10 +191,11 @@ use doctype_admin\Blog\Models\Category;
 use doctype_admin\Blog\Traits\PostScopes;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelScopes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use Taggable,PostScopes,ModelScopes;
+    use Taggable, PostScopes, ModelScopes, Sluggable;
 
     protected $guarded = [];
 
@@ -216,7 +218,31 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function getStatusAttribute($attribute)
+    {
+        return [
+            1 => "Pending",
+            2 => "Draft",
+            3 => "Published"
+        ][$attribute];
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }
+
 ```
 
 ### Admin Panel Screenshot
@@ -237,6 +263,7 @@ class Post extends Model
 
 - https://github.com/rtconner/laravel-tagging
 - https://github.com/jeroennoten/Laravel-AdminLTE
+- https://github.com/cviebrock/eloquent-sluggable
 
 ## License
 
