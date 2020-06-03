@@ -19,3 +19,5 @@ Route::resource('/post', 'PostsController');
 Route::resource('/category', 'CategoriesController');
 
 Route::get('/check_slug', 'PostsController@check_slug')->name('check_slug');
+
+Route::get('/check_slug_category', 'CategoriesController@check_slug')->name('check_slug_category');

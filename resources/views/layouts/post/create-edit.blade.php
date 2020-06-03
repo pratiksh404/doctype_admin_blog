@@ -2,14 +2,31 @@
   {{-- -----------------------------------------------------Left Panel----------------------------------------------------- --}}
   <div class="col-lg-8">
     <div class="form-group">
-      {{-- Post Title --}}
-      <label for="title">Post Title</label>
-      <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title"
-        value="{{ !empty($post) ? $post->title : old('title') }}">
-      {{-- Post Excerpt --}}
-      <label for="post_excerpt">Post Excerpt</label>
-      <textarea class="form-control" name="excerpt" rows="3" id="post_excerpt"
-        placeholder="Enter ...">{{!empty($post) ? $post->excerpt : old('excerpt')}}</textarea>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Post Heading
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pad">
+              <div class="mb-3">
+                {{-- Post Title --}}
+                <label for="title">Post Title</label>
+                <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title"
+                  value="{{ !empty($post) ? $post->title : old('title') }}">
+                {{-- Post Excerpt --}}
+                <label for="post_excerpt">Post Excerpt</label>
+                <textarea class="form-control" name="excerpt" rows="3" id="post_excerpt"
+                  placeholder="Enter ...">{{!empty($post) ? $post->excerpt : old('excerpt')}}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <br>
       {{-- Post Body --}}
       <div class="row">
@@ -30,7 +47,7 @@
             <!-- /.card-header -->
             <div class="card-body pad">
               <div class="mb-3">
-                <textarea class="textarea" name="body" placeholder="Place some text here"
+                <textarea class="textarea" name="body" rows="40" placeholder="Place some text here"
                   style="width: 100%; height: 100vh; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 5px;">
               @if (!empty($post))
                   {{$post->body ? $post->body : old('body')}}
@@ -208,7 +225,8 @@
               <br>
               {{-- Post Meta Description --}}
               <label for="post_meta_description">Post Meta Description</label>
-              <textarea class="form-control" name="meta_description" rows="3" id="post_excerpt" placeholder="Enter ...">
+              <textarea class="form-control" name="meta_description" rows="3" id="meta_description"
+                placeholder="Enter ...">
                   {{!empty($post) && $post->meta_description ? $post->meta_description : ''}}
               </textarea>
               <br>

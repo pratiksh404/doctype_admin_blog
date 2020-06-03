@@ -23,64 +23,34 @@
 </section>
 @stop
 
-  @section('content')
-  <section class="content">
-    <div class="container-fluid">
-      <div class="card card-outline card-info">
-        <div class="card-header">
-          <h3 class="card-title">Edit Post Blog</h3>
-        </div>
-        <div class="card-body">
-          <form action="{{ url(config('blog.prefix','admin').'/'.'post').'/'.$post->id }}" method="POST" enctype="multipart/form-data">
-            @method('PATCH')
-            @csrf
-            @include('blog::layouts.post.create-edit')
-          </form>
-        </div>
-        {{-- --------------------------------------------------------------------------------------------------------------------- --}}
+@section('content')
+<section class="content">
+  <div class="container-fluid">
+    <div class="card card-outline card-info">
+      <div class="card-header">
+        <h3 class="card-title">Edit Post Blog</h3>
       </div>
-
+      <div class="card-body">
+        <form action="{{ url(config('blog.prefix','admin').'/'.'post').'/'.$post->id }}" method="POST"
+          enctype="multipart/form-data">
+          @method('PATCH')
+          @csrf
+          @include('blog::layouts.post.create-edit')
+        </form>
+      </div>
+      {{-- --------------------------------------------------------------------------------------------------------------------- --}}
     </div>
-  </section>
+
+  </div>
+</section>
 
 
-  @stop
+@stop
 
-    @section('css')
-    <link rel="stylesheet" href="{{asset('/css/admin_custom.css')}}">
-    @stop
+@section('css')
+<link rel="stylesheet" href="{{asset('/css/admin_custom.css')}}">
+@stop
 
-      @section('js')
-      <script>
-        $(function () {
-          //Initialize Select2 Elements
-          $('.select2').select2()
-          //Intialize Summernote Text Editor
-          $('.textarea').summernote()
-          //Initialize Bootstrap Switch
-          $("input[data-bootstrap-switch]").each(function () {
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-          });
-
-          $(document).ready(function(){
-        $('#keywords').selectize({
-            plugins: ['restore_on_backspace'],
-            plugins: ['remove_button'],
-            delimiter: ',',
-            persist: false,
-            valueField: 'keyword',
-            labelField: 'keyword',
-            searchField: 'keyword',
-            options: keywords,
-            items : keywords,
-            create: function(input,callback) {
-                return {
-                    keyword: input
-                },
-                callback({ keyword: input });
-            }
-        });
-    });
-        });
-      </script>
-      @stop
+@section('js')
+@include('blog::layouts.post.scripts')
+@stop
