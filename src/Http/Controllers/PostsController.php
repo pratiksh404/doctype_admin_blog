@@ -2,13 +2,14 @@
 
 namespace doctype_admin\Blog\Http\Controllers;
 
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use RealRashid\SweetAlert\Facades\Alert as Alert;
-use doctype_admin\Blog\Models\Category;
-use doctype_admin\Blog\Models\Post;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use doctype_admin\Blog\Models\Post;
+use doctype_admin\Blog\Models\Category;
+use RealRashid\SweetAlert\Facades\Alert as Alert;
 use Intervention\Image\Facades\Image as Image;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
@@ -52,14 +53,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
         $post = Post::create($this->validateData());
         if (config('blog.post_tagging', 'true')) {
             /* Assigning tags */
             $post->tag(explode(',', $request->tags));
             $this->uploadImage($post);
         }
-        toast("Post Created", "success");
+        Alert::success("Post Created", "Success");
         return redirect(config('blog.prefix', 'admin') . '/' . 'post');
     }
 
@@ -100,8 +100,7 @@ class PostsController extends Controller
 
     public function update(Request $request, Post $post)
     {
-
-        $post->update($this->validateData());
+        $post->update($this->validateData($post->id));
         if (config('blog.post_tagging', 'true')) {
             /* Assigning tags */
             $post->tag(explode(',', $request->tags));
@@ -113,7 +112,7 @@ class PostsController extends Controller
             /* ------------------ */
         }
         $this->uploadImage($post);
-        toast("Post Updated", "info");
+        Alert::info('Post Updated', 'Success');
         return redirect(config('blog.prefix', 'admin') . '/' . 'post');
     }
 
@@ -129,12 +128,12 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        toast("Post Deleted", "error");
+        Alert::error("Post Deleted", "Success");
         return redirect(config('blog.prefix', 'admin') . '/' . 'post');
     }
 
 
-    private function validateData()
+    private function validateData($id = null)
     {
         return tap(
             request()->validate([
@@ -145,7 +144,7 @@ class PostsController extends Controller
                 'excerpt' => 'required|max:300',
                 'body' => 'sometimes|max:5000',
                 'image' => 'sometimes|file|image|max:5000',
-                'slug' => 'required|unique|max:100',
+                'slug' => 'required|max:100|unique:posts,slug,' . $id ?? '',
                 'meta_description' => 'max:200',
                 "meta_keywords" => 'max:300',
                 "status" => 'required|numeric',
@@ -164,11 +163,45 @@ class PostsController extends Controller
     private function uploadImage($post)
     {
         if (!empty(request()->image) && request()->has('image')) {
+
+            /* ------------------------------------------------------------------- */
+
+            $image_file = request()->file('image'); // Retriving Image File
+            $filenamewithextension  = $image_file->getClientOriginalName(); //Retriving Full Image Name
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME); //Retriving Image Filename only
+            $extension = $image_file->getClientOriginalExtension(); //Retriving Image extension
+            $imageStoreName = $filename . "-" . time() . "." . $extension; //Making Image Store name
+
+            /* ------------------------------------------------------------------- */
             $post->update([
-                'image' => request()->image->store('uploads/blog/post', 'public')
+                'image' => request()->image->storeAs('uploads/blog/post', $imageStoreName, 'public')
             ]);
-            $image = Image::make(request()->file('image')->getRealPath());
-            $image->save(public_path('storage/' . $post->image));
+
+            $image = Image::make(request()->file('image')->getRealPath())->fit(config('blog.img_width', 1000), config('blog.img_height', 800));;
+            $image->save(public_path('storage/' . $post->image), config('blog.image_quality', 80));
+
+            if (config('blog.thumbnail', true)) {
+                /* --------------------- Thumbnail Info--------------------------------- */
+
+                //small thumbnail name
+                $smallthumbnail = $filename .  "-" . time() . '-small' . '.' . $extension; // Making Thumbnail Name
+
+                //medium thumbnail name
+                $mediumthumbnail = $filename . "-" . time() . '-medium' . '.' . $extension; // Making Thumbnail Name
+
+                $small_thumbnail = request()->file('image')->storeAs('uploads/blog/post', $smallthumbnail, 'public'); // Thumbnail Storage Information
+                $medium_thumbnail = request()->file('image')->storeAs('uploads/blog/post', $mediumthumbnail, 'public'); // Thumbnail Storage Information
+
+                /* --------------------------------- Saving Thumbnail------------------------------------ */
+
+                $medium_img = Image::make(request()->file('image')->getRealPath())->fit(config('blog.medium_thumbnail_width', 800), config('blog.medium_thumbnail_height', 600)); //Storing Thumbnail
+                $medium_img->save(public_path('storage/' . $medium_thumbnail), config('blog.medium_thumbnail_quality', 60)); //Storing Thumbnail
+
+                $small_img = Image::make(request()->file('image')->getRealPath())->fit(config('blog.small_thumbnail_width', 400), config('blog.small_thumbnail_height', 300)); //Storing Thumbnail
+                $small_img->save(public_path('storage/' . $small_thumbnail), config('blog.small_thumbnail_quality', 30)); //Storing Thumbnail
+
+                /* ------------------------------------------------------------------------------------- */
+            }
         }
     }
 

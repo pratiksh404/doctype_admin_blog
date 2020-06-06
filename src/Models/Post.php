@@ -58,4 +58,16 @@ class Post extends Model
             ]
         ];
     }
+
+    public function thumbnail($size)
+    {
+        $image = $this->image;
+        $path = explode("/", $image);
+        $extension = \File::extension($image);
+        $name = basename($image, "." . $extension);
+        $thumbnail = $name . "-" . (string) $size . "." . $extension;
+        array_pop($path);
+        $thumbnail_path = implode("/", $path) . "/" . $thumbnail;
+        return $thumbnail_path;
+    }
 }

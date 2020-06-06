@@ -178,7 +178,7 @@
           <div class="card-body pad">
             <div class="mb-3">
               @if (!empty($post) && $post->image)
-              <img src="{{asset('storage').'/'.$post->image}}"
+              <img src="{{asset('storage').'/'.$post->thumbnail('medium')}}"
                 alt="{{$post->seo_title ? $post->seo_title : $post->title}}" class="img-fluid">
               @endif
               <label for="post_image">Post Image</label>
