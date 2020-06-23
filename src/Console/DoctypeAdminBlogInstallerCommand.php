@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class DoctypeAdminBlogInstallerCommand extends Command
 {
-    protected $signature = "DoctypeAdminBlog:install {--c|config : Installs only config file} {--f|view : Installs only view files} {--m|migration : Installs only migration files} {--s|seed : Installs only seed files} {--t|taggable : Publish Tag Service Provider} {--a|all : Installs all publishable files}";
+    protected $signature = "DoctypeAdminBlog:install {--c|config : Installs only config file} {--f|view : Installs only view files} {--m|migration : Installs only migration files} {--d|dummy : Installs only seed files} {--t|taggable : Publish Tag Service Provider} {--a|all : Installs all publishable files}";
 
     protected $description = "This Command installs Doctype Admin Blog Package to your Admin Panel";
 
@@ -29,7 +29,7 @@ class DoctypeAdminBlogInstallerCommand extends Command
                     '--tag' => ['blog-migrations']
                 ]);
             }
-            if ($this->option('seed')) {
+            if ($this->option('dummy')) {
                 $this->call('vendor:publish', [
                     '--tag' => ['blog-seeds']
                 ]);
@@ -51,6 +51,9 @@ class DoctypeAdminBlogInstallerCommand extends Command
                 ]);
                 $this->call('vendor:publish', [
                     '--tag' => ['blog-seeds']
+                ]);
+                $this->call('vendor:publish', [
+                    '--provider' => ['Conner\Tagging\Providers\TaggingServiceProvider']
                 ]);
                 $this->info("Doctype Admin Blog Installed");
             }

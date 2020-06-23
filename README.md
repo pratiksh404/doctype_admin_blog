@@ -54,7 +54,7 @@ php artisan DoctypeAdminBlog:install -m
 #### Install seed files only
 
 ```sh
-php artisan DoctypeAdminBlog:install -s
+php artisan DoctypeAdminBlog:install -d
 ```
 
 ## Then migrate database
@@ -63,22 +63,21 @@ php artisan DoctypeAdminBlog:install -s
 php artisan migrate
 ```
 
-If you want to migrate file with seed
-
-```sh
-php artisan migrate --seed
-```
-
 This Package includes two seed
 
 - PostsTableSeeder
 - CategoriesTableSeeder
-  To use specific seed use
+
+To use specific seed use
 
 ```sh
-php artisan db:seed --class=PostsTableSeeder
-php artisan db:seed --class=CategoriesTableSeeder
+php artisan db:seed --class=CategoriesTableSeeder //Seed this first
+php artisan db:seed --class=PostsTableSeeder // And then this
 ```
+
+## Note
+
+If seed class is not found try running composer dump-autoload
 
 ## Package Config File
 
