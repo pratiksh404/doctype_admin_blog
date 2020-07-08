@@ -83,7 +83,7 @@ class BlogServiceProvider extends ServiceProvider
         return [
             'prefix' => config('blog.prefix', 'admin'),
             'namespace' => 'doctype_admin\Blog\Http\Controllers',
-            'middleware' => config('blog.middleware', ['web', 'auth', 'activity'])
+            'middleware' => config('blog.middleware', ['web', 'auth', 'activity', 'role:admin'])
         ];
     }
 }

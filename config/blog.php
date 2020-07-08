@@ -36,7 +36,7 @@ return [
     | remove activity middleware
     | 
     */
-    'middleware' => ['web', 'auth', 'activity'],
+    'middleware' => ['web', 'auth', 'activity', 'role:admin'],
 
     /*
     |--------------------------------------------------------------------------
