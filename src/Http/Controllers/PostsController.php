@@ -57,8 +57,8 @@ class PostsController extends Controller
         if (config('blog.post_tagging', 'true')) {
             /* Assigning tags */
             $post->tag(explode(',', $request->tags));
-            $this->uploadImage($post);
         }
+        $this->uploadImage($post);
         Alert::success("Post Created", "Success");
         return redirect(config('blog.prefix', 'admin') . '/' . 'post');
     }

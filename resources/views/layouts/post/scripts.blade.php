@@ -1,5 +1,12 @@
 <script type="text/javascript">
-    $(function () {
+  $(function () {
+    // Datatables
+    $("#datatable").DataTable({
+        "responsive": true,
+        "autoWidth": true,
+        "ordering": true,
+        "info": true,
+        });
           //Initialize Select2 Elements
           $('.select2').select2()
           //Intialize Summernote Text Editor
@@ -8,25 +15,6 @@
           $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
           });
-         $(document).ready(function(){
-        $('#keywords').selectize({
-            plugins: ['restore_on_backspace'],
-            plugins: ['remove_button'],
-            delimiter: ',',
-            persist: false,
-            valueField: 'keyword',
-            labelField: 'keyword',
-            searchField: 'keyword',
-            options: keywords,
-            items : keywords,
-            create: function(input,callback) {
-                return {
-                    keyword: input
-                },
-                callback({ keyword: input });
-            }
-        });
-    });
 
     $( document ).ready(function() {
     $('#tags').selectize({
