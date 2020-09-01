@@ -51,6 +51,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Thumbnail Storage
+    |--------------------------------------------------------------------------
+    |
+    | This option defines where are all blog post image are stored.
+    | 
+    | 
+    */
+
+    'post_image_storage' => 'blog/post',
+
+    /*
+    |--------------------------------------------------------------------------
     | Thumbnail Qualities
     |--------------------------------------------------------------------------
     |
@@ -81,5 +93,38 @@ return [
 
     'small_thumbnail_width' => 400,
     'small_thumbnail_height' => 300,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Thumbnails
+    |--------------------------------------------------------------------------
+    |
+    | Option allows implementation of own custom thumbnail rather than package default
+    | one, Please note that naming covention must strickly be followed
+    | Note that if custom_thumbnails is in use default thumbnail values above will not be used
+    | 
+    */
+
+    /* 
+    'custom_thumbnails' => [
+        'storage' => 'customs/thumbnail', // Thumbnail Storage Location
+        'width' => '600', // Upload Parent Image with
+        'height' => '400', // Upload Parent Image height
+        'quality' => '70',  // Upload Parent Image Quality
+        'thumbnails' => [
+            [
+                'thumbnail-name' => 'customMedium', // Thumbnail Name
+                'thumbnail-width' => '300', // Thumbnail Width
+                'thumbnail-height' => '200', // Thumbnail Height
+                'thumbnail-quality' => '50' // Thumbnail Quality
+            ],
+            [
+                'thumbnail-name' => 'customSmall', // Thumbnail Name
+                'thumbnail-width' => '150', // Thumbnail Width
+                'thumbnail-height' => '100', // Thumbnail Height
+                'thumbnail-quality' => '30' // Thumbnail Quality
+            ],
+        ]
+    ], */
 
 ];

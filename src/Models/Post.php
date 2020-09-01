@@ -3,16 +3,17 @@
 namespace doctype_admin\Blog\Models;
 
 use App\User;
+use App\Traits\ModelScopes;
 use Conner\Tagging\Taggable;
 use doctype_admin\Blog\Models\Category;
-use doctype_admin\Blog\Traits\PostScopes;
+use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\ModelScopes;
+use doctype_admin\Blog\Traits\PostScopes;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use Taggable, PostScopes, ModelScopes, Sluggable;
+    use Taggable, PostScopes, ModelScopes, Sluggable, Thumbnail;
 
     protected $guarded = [];
 
@@ -57,17 +58,5 @@ class Post extends Model
                 'source' => 'title'
             ]
         ];
-    }
-
-    public function thumbnail($size)
-    {
-        $image = $this->image;
-        $path = explode("/", $image);
-        $extension = \File::extension($image);
-        $name = basename($image, "." . $extension);
-        $thumbnail = $name . "-" . (string) $size . "." . $extension;
-        array_pop($path);
-        $thumbnail_path = implode("/", $path) . "/" . $thumbnail;
-        return $thumbnail_path;
     }
 }

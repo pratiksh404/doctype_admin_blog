@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1cc91e9573e9fa39eaeac7d5956604c0",
+    "content-hash": "a085dffc9ce3b99737c5d8207e220aed",
     "packages": [
         {
             "name": "brick/math",
@@ -411,6 +411,64 @@
                 "schedule"
             ],
             "time": "2019-03-31T00:38:28+00:00"
+        },
+        {
+            "name": "drh2so4/thumbnail",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pratiksh404/laravel-thumbnails.git",
+                "reference": "c0e3802e62fd3902f79f3f7955afc5b9e3ce9710"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pratiksh404/laravel-thumbnails/zipball/c0e3802e62fd3902f79f3f7955afc5b9e3ce9710",
+                "reference": "c0e3802e62fd3902f79f3f7955afc5b9e3ce9710",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "^2.4@dev"
+            },
+            "require-dev": {
+                "orchestra/testbench": "5.x-dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "drh2so4\\Thumbnail\\ThumbnailServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "drh2so4\\Thumbnail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pratik Shrestha",
+                    "email": "pratikdai404@gmail.com"
+                }
+            ],
+            "description": "Package for making thumbnails instantly.",
+            "keywords": [
+                "doctype nepal",
+                "doctypenepal",
+                "drh2so4",
+                "laravel thumbnail",
+                "laravel thumbnail generator",
+                "laravel thumbnail package",
+                "pratik shrestha",
+                "pratiksh404",
+                "pratikshrestha",
+                "thumbnail generator"
+            ],
+            "time": "2020-08-11T13:42:28+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1671,90 +1729,6 @@
                 }
             ],
             "time": "2020-03-29T20:13:32+00:00"
-        },
-        {
-            "name": "realrashid/sweet-alert",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
-                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^5.4|^6.0|^7.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "symfony/thanks": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
-                    ],
-                    "aliases": {
-                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RealRashid\\SweetAlert\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rashid Ali",
-                    "email": "realrashid05@gmail.com",
-                    "homepage": "https://realrashid.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES FOR LARAVEL BY RASHID ALI",
-            "homepage": "https://github.com/realrashid/sweet-alert",
-            "keywords": [
-                "alert",
-                "laravel",
-                "laravel-package",
-                "notifier",
-                "noty",
-                "sweet-alert",
-                "sweet-alert2",
-                "toast"
-            ],
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://issuehunt.io/r/realrashid",
-                    "type": "issuehunt"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-03-31T15:40:35+00:00"
         },
         {
             "name": "rtconner/laravel-tagging",
@@ -5845,7 +5819,6 @@
     "minimum-stability": "beta",
     "stability-flags": {
         "intervention/image": 20,
-        "realrashid/sweet-alert": 20,
         "orchestra/testbench": 20
     },
     "prefer-stable": false,
