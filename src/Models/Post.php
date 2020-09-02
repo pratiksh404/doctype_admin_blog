@@ -10,10 +10,11 @@ use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
 use doctype_admin\Blog\Traits\PostScopes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Post extends Model
 {
-    use Taggable, PostScopes, ModelScopes, Sluggable, Thumbnail;
+    use Taggable, PostScopes, ModelScopes, Sluggable, SluggableScopeHelpers, Thumbnail;
 
     protected $guarded = [];
 

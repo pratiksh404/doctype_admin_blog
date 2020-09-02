@@ -13,7 +13,8 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix','admin').'/'.'dashboard')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'dashboard')}}">Home</a>
+          </li>
           <li class="breadcrumb-item active">Post</li>
         </ol>
       </div>
@@ -34,7 +35,8 @@
           <div class=" d-flex justify-content-between">
             <h3 class="card-title">All Posts </h3>
             <small> Total Count : {{count($posts)}}</small>
-            <a href="{{url(config('blog.prefix','admin').'/'.'post/create')}}" class="btn btn-success">Create Post</a>
+            <a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'post/create')}}" class="btn btn-success">Create
+              Post</a>
           </div>
         </div>
         <!-- /.card-header -->
@@ -63,10 +65,10 @@
                   @endif
                 </td>
                 <td class="d-flex justify-content-around">
-                  <a href="{{url(config('blog.prefix','admin').'/'.'post').'/'.$post->id}}"
+                  <a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'post').'/'.$post->id}}"
                     class="btn btn-sm btn-primary" target="_blank" title="Show Post"><i class="fas fa-eye"></i></a>
-                  <a href="{{url(config('blog.prefix','admin').'/'.'post').'/'.$post->id.'/edit'}}" target="_blank"
-                    class="btn btn-sm btn-warning" title="Edit Post"><i class="fas fa-edit"></i></a>
+                  <a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'post').'/'.$post->id.'/edit'}}"
+                    target="_blank" class="btn btn-sm btn-warning" title="Edit Post"><i class="fas fa-edit"></i></a>
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#post-{{$post->id}}">
                     <i class="fas fa-trash"></i>
                   </button>

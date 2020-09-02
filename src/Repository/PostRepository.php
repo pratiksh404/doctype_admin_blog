@@ -137,30 +137,32 @@ class PostRepository implements PostRepositoryInterface
 
     private function uploadImage($post)
     {
-        $thumbnails = [
-            'storage' => config('blog.post_image_storage', 'blogs/post')  . '/' . $post->slug,
-            'width' => config('blog.img_width', 1000),
-            'height' => config('blog.img_height', 800),
-            'quality' => config('blog.image_quality', 80),
-            'thumbnails' => [
-                [
-                    'thumbnail-name' => 'medium',
-                    'thumbnail-width' => config('blog.medium_thumbnail_width', 800),
-                    'thumbnail-height' => config('blog.medium_thumbnail_height', 600),
-                    'thumbnail-quality' => config('blog.medium_thumbnail_quality', 60),
-                ],
-                [
-                    'thumbnail-name' => 'small',
-                    'thumbnail-width' => config('blog.small_thumbnail_width', 400),
-                    'thumbnail-height' => config('blog.small_thumbnail_height', 300),
-                    'thumbnail-quality' => config('blog.small_thumbnail_quality', 30),
+        if (request()->image) {
+            $thumbnails = [
+                'storage' => config('blog.post_image_storage', 'blogs/post')  . '/' . $post->slug,
+                'width' => config('blog.img_width', 1000),
+                'height' => config('blog.img_height', 800),
+                'quality' => config('blog.image_quality', 80),
+                'thumbnails' => [
+                    [
+                        'thumbnail-name' => 'medium',
+                        'thumbnail-width' => config('blog.medium_thumbnail_width', 800),
+                        'thumbnail-height' => config('blog.medium_thumbnail_height', 600),
+                        'thumbnail-quality' => config('blog.medium_thumbnail_quality', 60),
+                    ],
+                    [
+                        'thumbnail-name' => 'small',
+                        'thumbnail-width' => config('blog.small_thumbnail_width', 400),
+                        'thumbnail-height' => config('blog.small_thumbnail_height', 300),
+                        'thumbnail-quality' => config('blog.small_thumbnail_quality', 30),
+                    ]
                 ]
-            ]
-        ];
-        if (config('blog.custom_thumbnails')) {
-            return $post->makeThumbnail('image', config('blog.custom_thumbnails'));
-        } else {
-            return $post->makeThumbnail('image', $thumbnails);
+            ];
+            if (config('blog.custom_thumbnails')) {
+                return $post->makeThumbnail('image', config('blog.custom_thumbnails'));
+            } else {
+                return $post->makeThumbnail('image', $thumbnails);
+            }
         }
     }
 }

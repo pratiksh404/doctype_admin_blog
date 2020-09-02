@@ -14,9 +14,10 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
-                            href="{{ url(config('blog.prefix','admin').'/'.'dashboard') }}">Home</a>
+                            href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'dashboard') }}">Home</a>
                     </li>
-                    <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix','admin').'/'.'post') }}">Post</a>
+                    <li class="breadcrumb-item"><a
+                            href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'post') }}">Post</a>
                     </li>
                     <li class="breadcrumb-item active">Show Post</li>
                 </ol>

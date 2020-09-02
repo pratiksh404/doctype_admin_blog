@@ -13,8 +13,9 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix','admin').'/'.'dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix','admin').'/'.'post') }}">Post</a></li>
+          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'dashboard') }}">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'post') }}">Post</a></li>
           <li class="breadcrumb-item active">Edit Post</li>
         </ol>
       </div>
@@ -31,7 +32,7 @@
         <h3 class="card-title">Edit Post Blog</h3>
       </div>
       <div class="card-body">
-        <form action="{{ url(config('blog.prefix','admin').'/'.'post').'/'.$post->id }}" method="POST"
+        <form action="{{ url(config('blog.prefix', 'admin/blog') .'/'.'post').'/'.$post->id }}" method="POST"
           enctype="multipart/form-data">
           @method('PATCH')
           @csrf

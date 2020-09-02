@@ -13,8 +13,10 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix','admin').'/'.'dashboard')}}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix','admin').'/'.'category')}}">Post Category</a>
+          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'dashboard')}}">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'category')}}">Post
+              Category</a>
           </li>
           <li class="breadcrumb-item active">Edit Post Category</li>
         </ol>
@@ -38,7 +40,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <form action="{{url(config('blog.prefix','admin').'/'.'category').'/'.$category->id}}" method="POST">
+          <form action="{{url(config('blog.prefix', 'admin/blog') .'/'.'category').'/'.$category->id}}" method="POST">
             @method('PATCH')
             @csrf
             <div class="form-group">

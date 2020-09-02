@@ -192,16 +192,13 @@ return [
 
 ## Post Scopes
 
-| Scopes                                         | Description                                                             |
-| ---------------------------------------------- | ----------------------------------------------------------------------- |
-| Post::featured()->get()                        | Retives all featured posts                                              |
-| Post::featuredLimit(\$limit)->get()            | Retives \$limit(type integer) no. of posts                              |
-| Post::published()->get()                       | Retrives published posts                                                |
-| Post::draft()->get()                           | Retrives draft posts                                                    |
-| Post::pending()->get()                         | Retrives pending posts                                                  |
-| Post::scopeRelatedTagPost(\$post)->get()       | Retrive related post of instance \$post having common tags              |
-| Post::scopeRelatedCategoryPosts(\$post)->get() | Retrive related post of instance \$post having common category          |
-| Post::scopeRelatedPosts(\$post)->get()         | Retrive related post of instance \$post having common tags and category |
+| Scopes                              | Description                                |
+| ----------------------------------- | ------------------------------------------ |
+| Post::featured()->get()             | Retives all featured posts                 |
+| Post::featuredLimit(\$limit)->get() | Retives \$limit(type integer) no. of posts |
+| Post::published()->get()            | Retrives published posts                   |
+| Post::draft()->get()                | Retrives draft posts                       |
+| Post::pending()->get()              | Retrives pending posts                     |
 
 ## Related Post Usages
 

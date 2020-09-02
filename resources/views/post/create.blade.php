@@ -13,8 +13,9 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix','admin').'/'.'dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix','admin').'/'.'post') }}">Post</a></li>
+          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'dashboard') }}">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="{{ url(config('blog.prefix', 'admin/blog') .'/'.'post') }}">Post</a></li>
           <li class="breadcrumb-item active">Create Post</li>
         </ol>
       </div>
@@ -31,7 +32,8 @@
         <h3 class="card-title">Post Blog</h3>
       </div>
       <div class="card-body">
-        <form action="{{ url(config('blog.prefix','admin').'/'.'post') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url(config('blog.prefix', 'admin/blog') .'/'.'post') }}" method="POST"
+          enctype="multipart/form-data">
           @csrf
           @include('blog::layouts.post.create-edit')
         </form>

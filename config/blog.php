@@ -23,7 +23,7 @@ return [
     | your admin panel. The default prefix is admin. You can change the prefix
     | but we highly recommend to use default one.
     */
-    'prefix' => 'admin',
+    'prefix' => 'admin/blog',
 
     /*
     |--------------------------------------------------------------------------

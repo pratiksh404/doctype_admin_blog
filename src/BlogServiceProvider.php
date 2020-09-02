@@ -76,14 +76,26 @@ class BlogServiceProvider extends ServiceProvider
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
+        Route::group($this->apiRouteConfguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        });
     }
 
     private function routeConfiguration()
     {
         return [
-            'prefix' => config('blog.prefix', 'admin'),
+            'prefix' => config('blog.prefix', 'admin/blog'),
             'namespace' => 'doctype_admin\Blog\Http\Controllers',
             'middleware' => config('blog.middleware', ['web', 'auth', 'activity', 'role:admin'])
+        ];
+    }
+
+    private function apiRouteConfguration()
+    {
+        return [
+            'prefix' => 'api/blog',
+            'namespace' => 'doctype_admin\Blog\Http\Controllers\APIs',
+            'middleware' => []
         ];
     }
 }

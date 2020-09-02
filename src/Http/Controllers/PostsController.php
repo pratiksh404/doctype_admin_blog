@@ -59,7 +59,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->postRepository->storePost($request);
-        return redirect(config('blog.prefix', 'admin') . '/' . 'post');
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
     }
 
     /**
@@ -96,7 +96,7 @@ class PostsController extends Controller
     public function update(Request $request, Post $post)
     {
         $this->postRepository->updatePost($request, $post);
-        return redirect(config('blog.prefix', 'admin') . '/' . 'post');
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
     }
 
     /**
@@ -111,7 +111,7 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         $this->postRepository->destroyPost($post);
-        return redirect(config('blog.prefix', 'admin') . '/' . 'post');
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
     }
 
 
