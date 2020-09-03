@@ -41,62 +41,49 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="datatable" class="table table-bordered table-striped table-hover">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Featured</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($posts as $post)
-              <tr>
-                <td>{{$post->id}}</td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->status}}</td>
-                <td>
-                  @if ($post->featured == 0)
-                  <button class="btn btn-seconday" title="Not Featured" disabled><i class="fas fa-star"></i></button>
-                  @elseif($post->featured == 1)
-                  <button class="btn btn-info" title="Featured" disabled><i class="fas fa-star"></i></button>
-                  @endif
-                </td>
-                <td class="d-flex justify-content-around">
-                  <a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'post').'/'.$post->id}}"
-                    class="btn btn-sm btn-primary" target="_blank" title="Show Post"><i class="fas fa-eye"></i></a>
-                  <a href="{{url(config('blog.prefix', 'admin/blog') .'/'.'post').'/'.$post->id.'/edit'}}"
-                    target="_blank" class="btn btn-sm btn-warning" title="Edit Post"><i class="fas fa-edit"></i></a>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#post-{{$post->id}}">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  {{-- Delete Model --}}
-                  @include('blog::layouts.post.confirm_delete')
-                  <!-- /.modal -->
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>id</th>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Featured</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-          </table>
+          <div class="card card-primary card-tabs">
+            <div class="card-header p-0 pt-1">
+              <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                <li class="pt-2 px-3">
+                  <h3 class="card-title">Blog Posts</h3>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="all_posts-tab" data-toggle="pill" href="#all_posts" role="tab"
+                    aria-controls="all_posts" aria-selected="true">All</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pending_posts-tab" data-toggle="pill" href="#pending_posts" role="tab"
+                    aria-controls="pending_posts" aria-selected="false">Pending</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="published_posts-tab" data-toggle="pill" href="#published_posts" role="tab"
+                    aria-controls="published_posts" aria-selected="false">Published</a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="tab-content" id="custom-tabs-two-tabContent">
+                <div class="tab-pane fade show active" id="all_posts" role="tabpanel" aria-labelledby="all_posts-tab">
+                  @include('blog::layouts.post.tab.all_posts')
+                </div>
+                <div class="tab-pane fade" id="pending_posts" role="tabpanel" aria-labelledby="pending_posts-tab">
+                  @include('blog::layouts.post.tab.pending_posts')
+                </div>
+                <div class="tab-pane fade" id="published_posts" role="tabpanel" aria-labelledby="published_posts-tab">
+                  @include('blog::layouts.post.tab.published_posts')
+                </div>
+              </div>
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
+        <!-- /.card -->
       </div>
-      <!-- /.card -->
+      <!-- /.col -->
     </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
+    <!-- /.row -->
 </section>
 <!-- /.content -->
 @stop

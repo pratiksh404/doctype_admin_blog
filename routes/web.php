@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/post', 'PostsController');
 
+Route::post('/post-publish/{post}', 'PostsController@postPublish');
+
+Route::post('/post-unpublish/{post}', 'PostsController@postUnpublish');
+
+Route::post('/post-feature/{post}', 'PostsController@postFeature');
+
+Route::post('/post-unfeature/{post}', 'PostsController@postUnfeature');
+
 Route::resource('/category', 'CategoriesController');
 
 Route::get('/check_slug', 'PostsController@check_slug')->name('check_slug');

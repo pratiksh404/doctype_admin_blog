@@ -76,9 +76,11 @@ class BlogServiceProvider extends ServiceProvider
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
-        Route::group($this->apiRouteConfguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-        });
+        if (config('blog.api_routes', false)) {
+            Route::group($this->apiRouteConfguration(), function () {
+                $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+            });
+        }
     }
 
     private function routeConfiguration()

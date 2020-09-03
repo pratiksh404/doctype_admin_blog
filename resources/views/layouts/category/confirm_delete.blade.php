@@ -8,22 +8,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{url(config('blog.prefix','admin').'/'.'category').'/'.$category->id}}" method="POST">
+      <form action="{{url(config('blog.prefix','admin/blog').'/'.'category').'/'.$category->id}}" method="POST">
         @method('DELETE')
-            @csrf   
-      <div class="modal-body">
-        <p>Are you sure you want to delete this category ?
-          <br>
-          <label>Post Category Name</label>
-          <br>
-          {{$category->name}}
-        </p>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-danger" title="Delete category">Yes Delete it.</button>
-      </div>
-    </form>
+        @csrf
+        <div class="modal-body">
+          <p>Are you sure you want to delete this category ?
+            <br>
+            <label>Post Category Name</label>
+            <br>
+            {{$category->name}}
+          </p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger" title="Delete category">Yes Delete it.</button>
+        </div>
+      </form>
     </div>
     <!-- /.modal-content -->
   </div>

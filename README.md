@@ -78,6 +78,10 @@ php artisan db:seed --class=PostsTableSeeder // And then this
 
 If seed class is not found try running composer dump-autoload
 
+## Update Note
+
+- Blog Routes has been changed from prefix admin/post and admin/category to admin/blog/post and admin/blog/category
+
 ## Package Config File
 
 ```sh
@@ -179,12 +183,12 @@ return [
                            [
                                'text' => 'Posts',
                                'icon' => 'fas fa-file',
-                               'url' => 'admin/post',
+                               'url' => 'admin/blog/post',
                            ],
                            [
                              'text' => 'Categories',
                              'icon' => 'fas fa-bezier-curve',
-                             'url' => 'admin/category',
+                             'url' => 'admin/blog/category',
                            ]
                           ]
         ],

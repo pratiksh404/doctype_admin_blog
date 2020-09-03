@@ -114,6 +114,66 @@ class PostsController extends Controller
         return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
     }
 
+    /**
+     *
+     *Updated Posts Status to Published
+     *
+     *@param \doctype_admin\Blog\Http\Models\Post $post
+     *
+     *@return \Illuminate\Http\Response
+     *
+     */
+    public function postPublish(Post $post)
+    {
+        $this->postRepository->postPublished($post);
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
+    }
+
+    /**
+     *
+     *Updated Posts Status to Published
+     *
+     *@param \doctype_admin\Blog\Http\Models\Post $post
+     *
+     *@return \Illuminate\Http\Response
+     *
+     */
+    public function postUnpublish(Post $post)
+    {
+        $this->postRepository->postUnpublished($post);
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
+    }
+
+    /**
+     *
+     *Updated Posts Featured to true
+     *
+     *@param \doctype_admin\Blog\Http\Models\Post $post
+     *
+     *@return \Illuminate\Http\Response
+     *
+     */
+    public function postFeature(Post $post)
+    {
+        $this->postRepository->postFeatured($post);
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
+    }
+
+    /**
+     *
+     *Updated Posts Featured to false
+     *
+     *@param \doctype_admin\Blog\Http\Models\Post $post
+     *
+     *@return \Illuminate\Http\Response
+     *
+     */
+    public function postUnfeature(Post $post)
+    {
+        $this->postRepository->postUnfeatured($post);
+        return redirect(config('blog.prefix', 'admin/blog') . '/' . 'post');
+    }
+
 
     public function check_slug(Request $request)
     {

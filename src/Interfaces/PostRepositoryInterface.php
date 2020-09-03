@@ -17,4 +17,12 @@ interface PostRepositoryInterface
     public function updatePost($request, $post);
 
     public function destroyPost($post);
+
+    public function postPublished($post);
+
+    public function postUnpublished($post);
+
+    public function postFeatured($post);
+
+    public function postUnfeatured($post);
 }

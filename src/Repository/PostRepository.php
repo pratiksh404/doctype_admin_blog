@@ -16,8 +16,10 @@ class PostRepository implements PostRepositoryInterface
      */
     public function indexPost()
     {
-        $posts = Post::with('category')->get();
-        return compact('posts');
+        $posts = Post::all();
+        $pending_posts = Post::where('status', 1)->get();
+        $published_posts = Post::where('status', 3)->get();
+        return compact('posts', 'pending_posts', 'published_posts');
     }
 
     /**
@@ -104,6 +106,30 @@ class PostRepository implements PostRepositoryInterface
     {
         $post->delete();
         Alert::error("Post Deleted", "Success");
+    }
+
+    /* Post Publish */
+    public function postPublished($post)
+    {
+        $post->update(['status' => 3]);
+    }
+
+    /* Unpublish Post */
+    public function postUnpublished($post)
+    {
+        $post->update(['status' => 1]);
+    }
+
+    /* Feature Post */
+    public function postFeatured($post)
+    {
+        $post->update(['featured' => 1]);
+    }
+
+    /* Unfeature Post */
+    public function postUnfeatured($post)
+    {
+        $post->update(['featured' => 0]);
     }
 
     /* Validation */
