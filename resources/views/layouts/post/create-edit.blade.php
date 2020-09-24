@@ -31,16 +31,15 @@
       {{-- Post Body --}}
       <div class="row">
         <div class="col-md-12">
-          <div class="card card-outline card-info">
+          <div class="card card-outline card-info collapsed-card">
             <div class="card-header">
               <h3 class="card-title">
                 Post Body
               </h3>
               <!-- tools box -->
               <div class="card-tools">
-                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                  title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                </button>
               </div>
               <!-- /. tools -->
             </div>
@@ -69,16 +68,15 @@
     {{-- Post Description --}}
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-outline card-info">
+        <div class="card card-outline card-info collapsed-card">
           <div class="card-header">
             <h3 class="card-title">
               Post Description
             </h3>
             <!-- tools box -->
             <div class="card-tools">
-              <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                title="Collapse">
-                <i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+              </button>
             </div>
             <!-- /. tools -->
           </div>
@@ -92,6 +90,17 @@
                 disabled>
               <input type="text" name="author_id" class="form-control" id="post_author" placeholder="Post Author"
                 value="{{ Auth::User()->id }}" hidden>
+              {{-- ---------- --}}
+              {{-- Type --}}
+              <label for="post_type">Post Type</label>
+              <select id="post_type" name="type" class="form-control">
+                <option value="1" {{isset($post->type) ? ($post->type == "Blog" ? 'selected' : '') : ''}}>Blog</option>
+                <option value="2" {{isset($post->type) ? ($post->type == "Event" ? 'selected' : '') : ''}}>Event
+                </option>
+                <option value="3" {{isset($post->type) ? ($post->type == "News" ? 'selected' : '') : ''}}>News</option>
+                <option value="4" {{isset($post->type) ? ($post->type == "Job Post" ? 'selected' : '') : ''}}>Job Post
+                </option>
+              </select>
               {{-- ---------- --}}
               {{-- Category --}}
               <label for="post_category">Post Category</label>
@@ -160,26 +169,26 @@
     {{-- ---------------------Post Image --------------------- --}}
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-outline card-info">
+        <div class="card card-outline card-info collapsed-card">
           <div class="card-header">
             <h3 class="card-title">
-              Post Image
+              Post Multimedia
             </h3>
             <!-- tools box -->
             <div class="card-tools">
-              <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                title="Collapse">
-                <i class="fas fa-minus"></i></button>
-
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+              </button>
             </div>
             <!-- /. tools -->
           </div>
           <!-- /.card-header -->
           <div class="card-body pad">
+            {{-- ---------------------Post Images--------------------- --}}
             <div class="mb-3">
               @if (!empty($post) && $post->image)
-              <img src="{{asset('storage').'/'.$post->thumbnail('medium')}}"
+              <img src="{{asset($post->thumbnail('image','medium'))}}"
                 alt="{{$post->seo_title ? $post->seo_title : $post->title}}" class="img-fluid">
+              <hr>
               @endif
               <label for="post_image">Post Image</label>
               <div class="input-group">
@@ -192,6 +201,21 @@
                 </div>
               </div>
             </div>
+            {{-- ----------------------------------------------- --}}
+            {{-- ---------------------Post Video--------------------- --}}
+            <div class="mb-3">
+              @if (!empty($post) && $post->video)
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{$post->video}}" allowfullscreen></iframe>
+              </div>
+              <hr>
+              @endif
+              <label for="video">Post Video</label>
+              <input type="text" name="video" id="video" class="form-control" value="{{$post->video ?? old('video') }}"
+                placeholder="Post Video">
+            </div>
+            {{-- ----------------------------------------------- --}}
+
           </div>
         </div>
       </div>
@@ -201,17 +225,15 @@
     {{-- ---------------------------- Post SEO ---------------------------- --}}
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-outline card-info">
+        <div class="card card-outline card-info collapsed-card">
           <div class="card-header">
             <h3 class="card-title">
               Post SEO
             </h3>
             <!-- tools box -->
             <div class="card-tools">
-              <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                title="Collapse">
-                <i class="fas fa-minus"></i></button>
-
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+              </button>
             </div>
             <!-- /. tools -->
           </div>

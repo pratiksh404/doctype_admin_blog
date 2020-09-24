@@ -1,6 +1,6 @@
 ![Doctype Admin Blog](https://github.com/pratiksh404/doctype_admin_blog/blob/master/screenshot/doctype_blog.png)
 
-[![Issues](https://img.shields.io/github/issues/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/stargazers) ![Downloads](https://poser.pugx.org/doctype_admin/settings/downloads) [![Issues](https://img.shields.io/github/license/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/blob/master/LICENSE)
+[![Issues](https://img.shields.io/github/issues/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/issues) [![Latest Stable Version](https://poser.pugx.org/doctype_admin/blog/v)](//packagist.org/packages/doctype_admin/blog) [![Stars](https://img.shields.io/github/stars/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/stargazers) [![Total Downloads](https://poser.pugx.org/doctype_admin/blog/downloads)](//packagist.org/packages/doctype_admin/blog) [![Issues](https://img.shields.io/github/license/pratiksh404/doctype_admin_blog)](https://github.com/pratiksh404/doctype_admin_blog/blob/master/LICENSE)
 
 ## Laravel 7 Admin Panel for lazy developers.
 

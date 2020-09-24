@@ -38,7 +38,10 @@
   "autoload": {
     "psr-4": {
       "doctype_admin\\Blog\\": "src/"
-    }
+    },
+    "files": [
+      "src/Helper/DoctypeAdminBlogRouteHelper.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

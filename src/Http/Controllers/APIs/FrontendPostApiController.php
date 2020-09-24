@@ -16,6 +16,11 @@ class FrontendPostApiController extends Controller
         $this->postDataRepository = $postDataRepository;
     }
 
+    public function allPosts()
+    {
+        return $this->postDataRepository->allPosts();
+    }
+
     public function showPost($slug)
     {
         return $this->postDataRepository->showPost($slug);

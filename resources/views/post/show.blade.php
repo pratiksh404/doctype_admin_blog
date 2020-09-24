@@ -94,6 +94,10 @@
                                         <div class="mb-3">
                                             <label>Author : </label>{{ $post->author->name }}
                                             <br>
+                                            @if($post->type)
+                                            <label>Post Type : </label>{{ $post->type }}
+                                            <br>
+                                            @endif
                                             @if($post->category_id)
                                             <label>Post Category : </label>{{ $post->category->name }}
                                             <br>
@@ -120,13 +124,13 @@
                         {{-- End of Post Description --}}
 
                         {{-- ---------------------Post Image --------------------- --}}
-                        @if($post->image)
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card card-outline card-info">
                                     <div class="card-header">
                                         <h3 class="card-title">
-                                            Post Image
+                                            Post Multimedia
                                         </h3>
                                         <!-- tools box -->
                                         <div class="card-tools">
@@ -139,16 +143,28 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body pad">
+                                        @if($post->image)
                                         <div class="mb-3">
+                                            <label>Post Image</label>
                                             <img src="{{ asset('storage').'/'.$post->image }}"
                                                 alt="{{ $post->seo_title ? $post->seo_title : $post->title }}"
                                                 class="img-fluid">
                                         </div>
+                                        <hr>
+                                        @endif
+                                        @if ($post->video)
+                                        <label>Post Video</label>
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="{{$post->video}}"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <hr>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endif
+
                         {{-- ---------------------Post Image End------------------ --}}
 
                         {{-- ---------------------------- Post SEO ---------------------------- --}}

@@ -29,4 +29,14 @@ class Category extends Model
             ]
         ];
     }
+
+    // Forget cache on updating or saving
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function () {
+            Cache::has('categories') ? Cache::forget('categories') : '';
+        });
+    }
 }

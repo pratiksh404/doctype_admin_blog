@@ -2,23 +2,33 @@
 
 namespace doctype_admin\Blog\Repository;
 
-
+use doctype_admin\Blog\Interfaces\PostDataRepositoryInterface;
 use doctype_admin\Blog\Models\Post;
+use Illuminate\Support\Facades\Cache;
 use doctype_admin\Blog\Models\Category;
 use RealRashid\SweetAlert\Facades\Alert as Alert;
 use doctype_admin\Blog\Interfaces\PostRepositoryInterface;
 
 class PostRepository implements PostRepositoryInterface
 {
+    protected $postDataRepository;
+
+    public function __construct(PostDataRepositoryInterface $postDataRepository)
+    {
+        $this->postDataRepository = $postDataRepository;
+    }
+
+    // Post Data Repository Intialization
+
     /**
      *
      *Display list of resource
      */
     public function indexPost()
     {
-        $posts = Post::all();
-        $pending_posts = Post::where('status', 1)->get();
-        $published_posts = Post::where('status', 3)->get();
+        $posts = $this->postDataRepository->allPosts();
+        $pending_posts = $this->postDataRepository->pendingPosts();
+        $published_posts = $this->postDataRepository->publishedPosts();
         return compact('posts', 'pending_posts', 'published_posts');
     }
 
@@ -29,7 +39,9 @@ class PostRepository implements PostRepositoryInterface
      */
     public function createPost()
     {
-        $categories = Category::all();
+        $categories = Cache::has('categories') ? Cache::get('categories') : Cache::rememberForever('categories', function () {
+            return Category::all();
+        });
         /* Retriving Tags */
         $tags = config('blog.post_tagging', 'true') == true ? Post::existingTags()->pluck('name') : false;
         return compact('categories', 'tags');
@@ -58,7 +70,7 @@ class PostRepository implements PostRepositoryInterface
      */
     public function showPost($post)
     {
-        //
+        return $post;
     }
 
     /**
@@ -149,7 +161,9 @@ class PostRepository implements PostRepositoryInterface
                 'meta_description' => 'max:200',
                 "meta_keywords" => 'max:300',
                 "status" => 'required|numeric',
-                'featured' => 'required|numeric'
+                'featured' => 'required|numeric',
+                'video' => 'sometimes|max:255',
+                'type' => 'required|numeric'
             ]),
             function () {
                 if (request()->has('image')) {

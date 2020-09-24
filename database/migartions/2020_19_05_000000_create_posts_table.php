@@ -27,6 +27,8 @@ class CreatePostsTable extends Migration
             $table->text('meta_keywords')->nullable();
             $table->integer('status')->default(0);
             $table->boolean('featured')->default(0);
+            $table->string('video')->nullable();
+            $table->integer('type')->default(1);
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users');
