@@ -1,9 +1,10 @@
-<table id="datatable" class="table table-bordered table-striped table-hover">
+<table class="table table-bordered table-striped table-hover datatable">
     <thead>
         <tr>
             <th>id</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Featured</th>
             <th>Action</th>
@@ -15,6 +16,7 @@
             <td>{{$post->id}}</td>
             <td>{{$post->author->name}}</td>
             <td>{{$post->title}}</td>
+            <td>{{$post->type}}</td>
             <td><button disabled="disabled"
                     class="btn btn-{{$post->status == 'Published' ? 'success' : ($post->status == 'Pending' ? 'warning' : 'default')}}">{{$post->status}}</button>
             </td>
@@ -45,6 +47,7 @@
             <th>id</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Featured</th>
             <th>Action</th>

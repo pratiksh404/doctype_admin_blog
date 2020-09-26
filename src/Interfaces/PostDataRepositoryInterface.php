@@ -12,6 +12,14 @@ interface PostDataRepositoryInterface
 
     public function publishedPosts();
 
+    public function blog();
+
+    public function event();
+
+    public function news();
+
+    public function job();
+
     public function showPost($slug);
 
     public function relatedTagPosts($post, $limit = 5);

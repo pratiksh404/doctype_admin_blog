@@ -2,6 +2,7 @@
 
 namespace doctype_admin\Blog;
 
+use doctype_admin\Blog\Repository\PostDataRepository;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,9 +30,12 @@ class BlogServiceProvider extends ServiceProvider
 
     public function register()
     {
+        // commands
         $this->commands([
             Console\DoctypeAdminBlogInstallerCommand::class
         ]);
+        // Facades
+        $this->facades();
     }
 
     /**
@@ -99,5 +103,12 @@ class BlogServiceProvider extends ServiceProvider
             'namespace' => 'doctype_admin\Blog\Http\Controllers\APIs',
             'middleware' => []
         ];
+    }
+
+    private function facades(): void
+    {
+        app()->bind('post', function () {
+            return new PostDataRepository;
+        });
     }
 }

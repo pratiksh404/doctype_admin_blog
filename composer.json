@@ -25,7 +25,7 @@
     "blog package",
     "drh2so4 blog package"
   ],
-  "minimum-stability": "beta",
+  "minimum-stability": "stable",
   "require": {
     "rtconner/laravel-tagging": "~4.0",
     "intervention/image": "^2.4@dev",
@@ -53,7 +53,10 @@
       "providers": [
         "doctype_admin\\Blog\\BlogServiceProvider",
         "doctype_admin\\Blog\\BlogRepositoryServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "Post": "doctype_admin\\Blog\\Facades\\Post"
+      }
     }
   }
 }

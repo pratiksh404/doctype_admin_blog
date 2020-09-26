@@ -48,6 +48,48 @@ class PostDataRepository implements PostDataRepositoryInterface
             : Post::published()->get();
     }
 
+    // Retrive Blog Post
+    public function blog()
+    {
+        return config('blog.caching', true)
+            ? Cache::has('blog_posts') ? Cache::get('blog_posts') : Cache::rememberForever('blog_posts', function () {
+                return Post::blog()->published()->get();
+            })
+            : Post::blog()->published()->get();
+    }
+
+    // Retrive Event Post
+    public function event()
+    {
+        return config('blog.caching', true)
+            ? Cache::has('event_posts') ? Cache::get('event_posts') : Cache::rememberForever('event_posts', function () {
+                return Post::event()->published()->get();
+            })
+            : Post::event()->published()->get();
+    }
+
+
+    // Retrive News Post
+    public function news()
+    {
+        return config('blog.caching', true)
+            ? Cache::has('news_posts') ? Cache::get('news_posts') : Cache::rememberForever('news_posts', function () {
+                return Post::news()->published()->get();
+            })
+            : Post::news()->published()->get();
+    }
+
+    //Retrive Job Post
+    public function job()
+    {
+        return config('blog.caching', true)
+            ? Cache::has('job_posts') ? Cache::get('job_posts') : Cache::rememberForever('job_posts', function () {
+                return Post::job()->published()->get();
+            })
+            : Post::job()->published()->get();
+    }
+
+
     // Show Post
     public function showPost($slug)
     {

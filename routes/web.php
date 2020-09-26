@@ -1,6 +1,7 @@
 
 <?php
 
+use doctype_admin\Blog\Facades\Post;
 use Illuminate\Support\Facades\Route;
 
 /*

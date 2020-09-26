@@ -43,6 +43,26 @@ class FrontendPostApiController extends Controller
         return $limit ? $this->limit($post, $limit) : $post->get();
     }
 
+    public function blog()
+    {
+        return $this->postDataRepository->blog();
+    }
+
+    public function event()
+    {
+        return $this->postDataRepository->event();
+    }
+
+    public function news()
+    {
+        return $this->postDataRepository->news();
+    }
+
+    public function job()
+    {
+        return $this->postDataRepository->job();
+    }
+
     public function relatedTagPosts($id, $limit = 5)
     {
         $post = Post::findOrFail($id);

@@ -202,7 +202,25 @@ return [
 | Post::featuredLimit(\$limit)->get() | Retives \$limit(type integer) no. of posts |
 | Post::published()->get()            | Retrives published posts                   |
 | Post::draft()->get()                | Retrives draft posts                       |
-| Post::pending()->get()              | Retrives pending posts                     |
+| Post::pending()->get()              | Retrives pending                           |
+| posts                               |
+
+### Cached Posts
+
+Doctype admin blog uses facade "Post" to retrive cached data.
+| Use | Description |
+| ----------------------------------- | ------------------------------------------ |
+| Post::allPosts | Retives all posts |
+| Post::pendingPosts | Retives Pending Posts |
+| Post::draftPosts | Retrives draft posts |
+| Post::publishedPosts | Retrives published posts |
+| Post::blog | Retrives Blog posts |
+| Post::event | Retrives event posts |
+| Post::news | Retrives news posts |
+| Post::job | Retrives job posts |
+| Post::relatedTagPosts(post,limit) | Retrives limit no. of posts related to post arguement instance tag |
+| Post::relatedCategoryPosts($post,$limit) | Retrives limit no. of posts related to post arguement instance category |
+| Post::relatedPosts($post,$limit) | Retrives limit no. of posts related to post arguement instance tag and category |
 
 ## Related Post Usages
 

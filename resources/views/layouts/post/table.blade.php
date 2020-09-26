@@ -1,0 +1,27 @@
+<table class="table table-bordered table-striped table-hover datatable">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Featured</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @yield('values')
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>id</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Featured</th>
+            <th>Action</th>
+        </tr>
+    </tfoot>
+</table>

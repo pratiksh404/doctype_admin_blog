@@ -88,6 +88,10 @@ class Post extends Model
             Cache::has('related_tag_posts') ? Cache::forget('related_tag_posts') : '';
             Cache::has('related_category_posts') ? Cache::forget('related_category_posts') : '';
             Cache::has('related_posts') ? Cache::forget('related_posts') : '';
+            Cache::has('blog_posts') ? Cache::forget('blog_posts') : '';
+            Cache::has('event_posts') ? Cache::forget('event_posts') : '';
+            Cache::has('news_posts') ? Cache::forget('news_posts') : '';
+            Cache::has('job_posts') ? Cache::forget('job_posts') : '';
         });
     }
 }

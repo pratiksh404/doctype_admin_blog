@@ -1,7 +1,7 @@
 <script type="text/javascript">
   $(function () {
     // Datatables
-    $("#datatable").DataTable({
+    $(".datatable").DataTable({
         "responsive": true,
         "autoWidth": true,
         "ordering": true,

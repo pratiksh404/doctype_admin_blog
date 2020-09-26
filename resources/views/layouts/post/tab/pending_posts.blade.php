@@ -1,11 +1,12 @@
-<table id="datatable" class="table table-bordered table-striped table-hover">
+<table class="table table-bordered table-striped table-hover datatable">
     <thead>
         <tr>
+            <th>id</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Featured</th>
-            <th>Submitted In</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -14,6 +15,7 @@
         <tr>
             <td>{{$post->author->name}}</td>
             <td>{{$post->title}}</td>
+            <td>{{$post->type}}</td>
             <td>
                 <form action="{{  url(config('blog.prefix','admin/blog').'/post-publish'.'/'.$post->id) }}"
                     method="post">
@@ -39,11 +41,12 @@
     </tbody>
     <tfoot>
         <tr>
+            <th>id</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Featured</th>
-            <th>Submitted In</th>
             <th>Action</th>
         </tr>
     </tfoot>

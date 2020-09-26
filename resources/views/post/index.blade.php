@@ -45,7 +45,7 @@
             <div class="card-header p-0 pt-1">
               <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                 <li class="pt-2 px-3">
-                  <h3 class="card-title">Blog Posts</h3>
+                  <h3 class="card-title">Posts</h3>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" id="all_posts-tab" data-toggle="pill" href="#all_posts" role="tab"

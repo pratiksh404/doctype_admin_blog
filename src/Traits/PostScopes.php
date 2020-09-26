@@ -19,7 +19,7 @@ trait PostScopes
 
     public function scopePublished($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', 3);
     }
 
     public function scopeDraft($query)
@@ -29,7 +29,7 @@ trait PostScopes
 
     public function scopePending($query)
     {
-        return $query->where('status', 3);
+        return $query->where('status', 1);
     }
 
     public function scopeRelatedTagPosts($query, $id, $tags, $limit = 5)
