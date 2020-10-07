@@ -18,7 +18,7 @@ class BlogRepositoryServiceProvider extends ServiceProvider
      *
      */
 
-    public function boot()
+    public function register()
     {
         $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
         $this->app->bind(PostDataRepositoryInterface::class, PostDataRepository::class);

@@ -30,13 +30,23 @@ class Category extends Model
         ];
     }
 
-    // Forget cache on updating or saving
+    // Forget cache on updating or saving and deleting
     public static function boot()
     {
         parent::boot();
 
         static::saving(function () {
-            Cache::has('categories') ? Cache::forget('categories') : '';
+            self::cacheKey();
         });
+
+        static::deleting(function () {
+            self::cacheKey();
+        });
+    }
+
+    // Cache Keys
+    private static function cacheKey(): void
+    {
+        Cache::has('categories') ? Cache::forget('categories') : '';
     }
 }

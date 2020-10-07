@@ -5,6 +5,7 @@ namespace doctype_admin\Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 use doctype_admin\Blog\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -20,7 +21,11 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = config('blog.caching', true)
+            ? Cache::has('categories') ? Cache::get('categories') : Cache::rememberForever('categories', function () {
+                return Category::all();
+            })
+            : Category::all();
         return view("blog::category.index", compact('categories'));
     }
 
