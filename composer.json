@@ -2,7 +2,6 @@
   "name": "doctype_admin/blog",
   "description": "Package to integrate blog system to your Doctype Admin",
   "license": "MIT",
-  "version": "1.0.0",
   "authors": [
     {
       "name": "Pratik Shrestha",
@@ -16,14 +15,9 @@
     "doctypenepal",
     "doctype admin",
     "doctype admin panel",
-    "drh2so4",
-    "pratiksh404",
-    "pratikshrestha",
-    "pratik shrestha",
     "doctype admin panel blog package",
     "admin panel blog package",
-    "blog package",
-    "drh2so4 blog package"
+    "blog package"
   ],
   "minimum-stability": "stable",
   "require": {
