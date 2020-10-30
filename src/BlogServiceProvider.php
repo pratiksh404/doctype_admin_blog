@@ -45,7 +45,7 @@ class BlogServiceProvider extends ServiceProvider
 
     private function registerResources()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migartions');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadFactoriesFrom(__DIR__ . '/../database/factories');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'blog');
         $this->registerRoutes();
@@ -68,7 +68,7 @@ class BlogServiceProvider extends ServiceProvider
         ], 'blog-views');
         /* Migration File Publish */
         $this->publishes([
-            __DIR__ . '/../database/migartions' => database_path('migrations')
+            __DIR__ . '/../database/migrations' => database_path('migrations')
         ], 'blog-migrations');
         /* Seed File Publish */
         $this->publishes([
