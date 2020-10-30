@@ -52,7 +52,8 @@ class BlogServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register Congig File
+     *Register Publihshing Files
+     * 
      *
      */
     protected function registerPublishing()
